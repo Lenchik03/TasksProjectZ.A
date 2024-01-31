@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <StackPanel>
-            <ListView/>
+            <ListView SelectedItem="" ItemsSource="{Binding Tasks}"/>
 
             <Button Content="Создать задачу" Click="NewTask_Click"/>
             <Button Content="История задач" Click="TaskHistory_Click"/>

@@ -23,18 +23,31 @@ namespace TasksProjectZ.A
     /// </summary>
     public partial class NewTask : Window, INotifyPropertyChanged
     {
-        public ObservableCollection<Task> Tasks { get; set; }
-        public List<string> Statuses {  get; set; } = new List<string>();
+        private ObservableCollection<TaskModel> Tasks {  get; set; } = new ObservableCollection<TaskModel>();
+        //public List<TaskModel> Statuses {  get; set; }
         public NewTask()
         {
             InitializeComponent();
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(task)));
-        }
+            //Statuses = new List<TaskModel>();
+            //Statuses.Add(new TaskModel
+            //{
+            //    Status = "Ожидает"
+            //});
 
+            //Statuses.Add(new TaskModel
+            //{
+            //    Status = "В работе"
+            //});
+        }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            Tasks = new ObservableCollection<Task>();
-            Tasks.Add(new Task());
+            
+            Tasks.Add(new TaskModel{
+                Title = "dfgsdf",
+                Description = "dvasdv",
+                IsPrompty = true
+            });
 
             using (FileStream fs = new FileStream("tasks.json", FileMode.OpenOrCreate))
             {
@@ -42,20 +55,12 @@ namespace TasksProjectZ.A
             }
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
+            NewTask newTask = new NewTask();
+            newTask.Close();
         }
-        Task task = new Task();
-        public Task Task { get; set; }
+        TaskModel task = new TaskModel();
+        //public TaskModel Newtask { get; set; }
       
         public event PropertyChangedEventHandler? PropertyChanged;
-    }
-
-    public class Task
-    {
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public DateTime CreationDate { get; set; } = DateTime.Now;
-        public bool IsPrompty { get; set; }
-        public string Status {  get; set; }
-        public DateTime CompletionDare { get; set; }
     }
 }

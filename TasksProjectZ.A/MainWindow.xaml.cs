@@ -27,17 +27,18 @@ namespace TasksProjectZ.A
             InitializeComponent();
 
             NewTask newTask = new NewTask();
+            TaskModel taskModel = new TaskModel();
 
-            //var f = new FileInfo("tasks.json");
-            //if (f.Exists && f.Length > 0)
-            //{
-            //    using (FileStream fs = new FileStream("tasks.json", FileMode.OpenOrCreate))
-            //    {
-            //        newTask.Task = JsonSerializer.Deserialize<Task>(fs);
-            //    }
-            //}
-            //else
-            //    newTask.Task = new Task();
+            var f = new FileInfo("tasks.json");
+            if (f.Exists && f.Length > 0)
+            {
+                using (FileStream fs = new FileStream("tasks.json", FileMode.OpenOrCreate))
+                {
+                    taskModel = JsonSerializer.Deserialize<TaskModel>(fs);
+                }
+            }
+            else
+                taskModel = new TaskModel();
 
 
         }
