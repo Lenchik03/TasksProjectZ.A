@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <StackPanel>
+            <ListView/>
+
+            <Button Content="Создать задачу" Click="NewTask_Click"/>
+            <Button Content="История задач" Click="TaskHistory_Click"/>
+        </StackPanel>
     </Grid>
 </Window>
