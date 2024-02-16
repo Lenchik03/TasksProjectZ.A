@@ -1,0 +1,19 @@
+﻿<Window x:Class="TasksProjectZ.A.NewTask"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TasksProjectZ.A"
+        mc:Ignorable="d"
+        Title="NewTask" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <Label Content="Название задачи"/>
+            <TextBox Text="{Binding Title}"/>
+            <Label Content="Описание задачи"/>
+            <TextBox Text="{Binding Description}"/>
+            <CheckBox Content="Срочно" IsChecked="{Binding IsPrompty}"/>
+            <Button Content="Сохранить" Click="SaveButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
