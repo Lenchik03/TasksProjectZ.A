@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="TaskHistory" Height="450" Width="800">
     <Grid>
-        
+        <ListView SelectedItem="{Binding SelectedTask}" ItemsSource="{Binding FilterTasks}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Заголовок" DisplayMemberBinding="{Binding Title}"/>
+                    <GridViewColumn Header="Содержание" DisplayMemberBinding="{Binding Description}"/>
+                    <GridViewColumn Header="Дата создания" DisplayMemberBinding="{Binding CreationDate}"/>
+                    <GridViewColumn Header="Срочность" DisplayMemberBinding="{Binding IsPrompty}"/>
+                    <GridViewColumn Header="Статус" DisplayMemberBinding="{Binding Status}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

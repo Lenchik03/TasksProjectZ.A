@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="NewTask" Height="450" Width="800">
     <Grid>
-        <StackPanel>
+        <StackPanel DataContext="{Binding task}">
             <Label Content="Название задачи"/>
             <TextBox Text="{Binding Title}"/>
             <Label Content="Описание задачи"/>

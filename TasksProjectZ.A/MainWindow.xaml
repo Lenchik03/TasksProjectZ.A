@@ -8,10 +8,22 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <StackPanel>
-            <ListView SelectedItem="" ItemsSource="{Binding Tasks}"/>
+            <ListView SelectedItem="{Binding SelectedTask}" ItemsSource="{Binding FilterTasks}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Заголовок" DisplayMemberBinding="{Binding Title}"/>
+                        <GridViewColumn Header="Содержание" DisplayMemberBinding="{Binding Description}"/>
+                        <GridViewColumn Header="Дата создание" DisplayMemberBinding="{Binding CreationDate}"/>
+                        <GridViewColumn Header="Срочность" DisplayMemberBinding="{Binding IsPrompty}"/>
+                        <GridViewColumn Header="Статус" DisplayMemberBinding="{Binding Status}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
 
             <Button Content="Создать задачу" Click="NewTask_Click"/>
             <Button Content="История задач" Click="TaskHistory_Click"/>
+            <Button Content="Выполненa" Click="ComplateClick_Button"/>
+            <Button Content="Отклонена" Click="Click_Button"/>
         </StackPanel>
     </Grid>
 </Window>

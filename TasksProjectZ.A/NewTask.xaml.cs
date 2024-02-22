@@ -23,44 +23,25 @@ namespace TasksProjectZ.A
     /// </summary>
     public partial class NewTask : Window, INotifyPropertyChanged
     {
-        private ObservableCollection<TaskModel> Tasks {  get; set; } = new ObservableCollection<TaskModel>();
+        public TaskModel task { get; set; } = new TaskModel();
         //public List<TaskModel> Statuses {  get; set; }
+        public event PropertyChangedEventHandler? PropertyChanged;
         public NewTask()
         {
             InitializeComponent();
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(task)));
-            //Statuses = new List<TaskModel>();
-            //Statuses.Add(new TaskModel
-            //{
-            //    Status = "Ожидает"
-            //});
-
-            //Statuses.Add(new TaskModel
-            //{
-            //    Status = "В работе"
-            //});
+            DataContext = this;
+            task.Status = Status.В_ожидании.ToString();
         }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            Tasks.Add(new TaskModel{
-                Title = "dfgsdf",
-                Description = "dvasdv",
-                IsPrompty = true
-            });
 
-            using (FileStream fs = new FileStream("tasks.json", FileMode.OpenOrCreate))
-            {
-                JsonSerializer.Serialize(fs, Tasks);
-            }
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            NewTask newTask = new NewTask();
-            newTask.Close();
+            Save.Tasks.Add(task);
+            Save.SaveTask();
+
+            Close();
         }
-        TaskModel task = new TaskModel();
         //public TaskModel Newtask { get; set; }
-      
-        public event PropertyChangedEventHandler? PropertyChanged;
+
     }
 }
