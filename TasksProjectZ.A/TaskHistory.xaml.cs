@@ -21,15 +21,9 @@ namespace TasksProjectZ.A
     /// <summary>
     /// Логика взаимодействия для TaskHistory.xaml
     /// </summary>
-    public partial class TaskHistory : Window
+    public partial class TaskHistory : Window, INotifyPropertyChanged
     {
         public ObservableCollection<TaskModel> FilterTasks { get; set; }
-
-        private void NewTask_Click(object sender, RoutedEventArgs e)
-        {
-            NewTask task = new NewTask();
-            task.ShowDialog();
-        }
         void Signal(string prop) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         public TaskHistory()
         {
